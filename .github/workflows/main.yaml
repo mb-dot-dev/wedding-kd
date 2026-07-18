@@ -13,7 +13,6 @@ permissions:
 env:
   PROJECT_NAME: 'wedding-kd'
   DOMAIN_NAME: 'kataesdomi.info'
-  SUBJECT_CLAIM: 'repo:mb-dot-dev@287293968/wedding-kd@1305172848:*'
 
 jobs:
   prepare:
@@ -28,7 +27,7 @@ jobs:
         run: |
           echo "project_name=${{ env.PROJECT_NAME }}" >> "$GITHUB_OUTPUT"
           echo "domain_name=${{ env.DOMAIN_NAME }}" >> "$GITHUB_OUTPUT"
-          echo "subject_claim=repo:${{ github.repository_owner }}@${{ github.repository_owner_id }}/${{ github.repository }}@${{ github.repository_id }}:*" >> "$GITHUB_OUTPUT"
+          echo "subject_claim=repo:${{ github.repository_owner }}@${{ github.repository_owner_id }}/wedding-kd@${{ github.repository_id }}:*" >> "$GITHUB_OUTPUT"
   
   build:
     name: Build, test, and generate static files
