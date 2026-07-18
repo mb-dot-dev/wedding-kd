@@ -6,7 +6,7 @@ describe("App", () => {
   it("renders the placeholder text", () => {
     const wrapper = mount(App, {
       global: {
-        stubs: ["NuxtRouteAnnouncer"],
+        stubs: { NuxtRouteAnnouncer: true },
       },
     });
 

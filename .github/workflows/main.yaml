@@ -41,7 +41,7 @@ jobs:
       - name: Lint
         run: bun lint
       - name: Test
-        run: bun test
+        run: bun run test
       - name: Generate static files
         run: bun generate
       - name: Upload build artifact
