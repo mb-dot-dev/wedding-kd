@@ -49,3 +49,29 @@ jobs:
         with:
           name: build
           path: dist
+
+  cfn-lint:
+    name: CloudFormation Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - name: Setup Cloud Formation Linter with Latest Version
+        uses: scottbrenner/cfn-lint-action@be676baed6db1a0d44f2f3ea59554623dc5b4109 # v2.4.9
+      - name: Print the Cloud Formation Linter Version & run Linter.
+        run: |
+          cfn-lint --version
+          cfn-lint -t ./aws/*.yaml
+
+  deploy-resource-group:
+    name: Deploy Resource Group
+    needs:
+      - prepare
+      - cfn-lint
+    uses: mb-dot-dev/reusable-workflows/.github/workflows/deploy-cloudformation.yaml@main
+    secrets: inherit
+    with:
+      stack-name: ${{ needs.prepare.outputs.project_name }}-resource-group
+      template: aws/resource-group.yaml
+      project: ${{ needs.prepare.outputs.project_name }}
+      parameter-overrides: >-
+        ProjectName=${{ needs.prepare.outputs.project_name }}
