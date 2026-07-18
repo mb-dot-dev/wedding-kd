@@ -75,3 +75,18 @@ jobs:
       project: ${{ needs.prepare.outputs.project_name }}
       parameter-overrides: >-
         ProjectName=${{ needs.prepare.outputs.project_name }}
+
+  deploy-bucket:
+    name: Deploy S3 Bucket
+    needs:
+      - prepare
+      - cfn-lint
+    uses: mb-dot-dev/reusable-workflows/.github/workflows/deploy-cloudformation.yaml@main
+    secrets: inherit
+    with:
+      stack-name: ${{ needs.prepare.outputs.project_name }}-bucket
+      template: aws/bucket.yaml
+      project: ${{ needs.prepare.outputs.project_name }}
+      parameter-overrides: >-
+        ProjectName=${{ needs.prepare.outputs.project_name }},
+        DomainName=${{ needs.prepare.outputs.domain_name }}
