@@ -37,7 +37,7 @@ Resources:
               StringEquals:
                 'token.actions.githubusercontent.com:aud': 'sts.amazonaws.com'
               StringLike:
-                'token.actions.githubusercontent.com:sub': 'repo:mb-dot-dev@287293968/stornoway@1061329177:*'
+                'token.actions.githubusercontent.com:sub': 'repo:mb-dot-dev@287293968/wedding-kd@1305172848:*'
       Policies:
         - PolicyName: 's3-read-write'
           PolicyDocument:
