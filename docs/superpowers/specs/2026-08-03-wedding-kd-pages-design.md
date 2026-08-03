@@ -96,7 +96,14 @@ app/
     RevolutIcon.vue
     VenuePlaceholder.vue     new
   assets/css/main.css
+test/
   app.test.ts
+  layouts/default.test.ts
+  components/presentational.test.ts
+  components/buttons.test.ts
+  pages/index.test.ts
+  pages/venues.test.ts
+  pages/info.test.ts
 public/images/
   save-the-date.jpg          web-sized derivative of image.png
   og.jpg                     1200x630 OpenGraph crop
@@ -205,17 +212,38 @@ The domain comes from `DOMAIN_NAME` in `.github/workflows/main.yaml`.
 
 ## Testing
 
-`app/app.test.ts` currently asserts the `"Jön"` placeholder and must be replaced. New
-tests use `@vue/test-utils` `mount` with the existing `vitest` + `happy-dom` setup — no
-new dependencies:
+`app/app.test.ts` currently asserts the `"Jön"` placeholder and is deleted. New tests use
+`@vue/test-utils` `mount` with the existing `vitest` + `happy-dom` setup — no new
+dependencies:
 
-1. `layouts/default.vue` renders all five nav links with the correct `href`s.
-2. `index.vue` renders the couple's names, the date, and the save-the-date `<img>`.
-3. Each of the four inner pages renders its `PageHeading` text.
+1. `app.vue` renders a page inside a layout and no longer shows the scaffold placeholder.
+2. `layouts/default.vue` renders all five nav links with the correct `href`s.
+3. The shared components render their slots, and `VenuePlaceholder` marks the missing map.
+4. The link buttons build the correct `geo:`, Google Maps, forms, and `revolut.me` URLs.
+5. `index.vue` renders the couple's names, the date, the save-the-date `<img>`, the
+   invitation copy with its emoji intact, and the program list.
+6. Each of the four inner pages renders its `PageHeading` text and its venue or
+   placeholder content, including the `Kulturális` spelling check.
 
-Nuxt auto-import composables (`useSeoMeta`) and components (`NuxtLayout`, `NuxtPage`,
-`NuxtRouteAnnouncer`) are stubbed or mocked per test, as `app.test.ts` already does for
-`NuxtRouteAnnouncer`.
+Tests live in a top-level `test/` directory mirroring the `app/` structure, **not**
+alongside the source. Nuxt scans `app/components/` for `.ts` files as well as `.vue`, so a
+`MapButton.test.ts` there would be registered as a component. Keeping tests outside `app/`
+avoids that entirely. The `format` and `format:check` scripts are widened to
+`prettier --write app test` so the new directory is covered.
+
+Nuxt auto-imports are handled per test file:
+
+- Composables (`useHead`, `useSeoMeta`) compile to bare global references under plain
+  vitest, so `vi.stubGlobal('useSeoMeta', vi.fn())` at module scope replaces them.
+- Child components are registered explicitly via `global.components` when their rendered
+  output is asserted, so real markup is tested rather than a stub.
+- `NuxtLayout` is stubbed with `{ template: '<div><slot /></div>' }`, not `true` — a bare
+  stub does not render its slot, which would hide the `NuxtPage` nested inside it.
+- Icon components inside the link buttons are left unresolved; Vue logs a warning and
+  renders an inert element, which does not affect the anchor assertions.
+
+Plain vitest does not exercise Nuxt's build, auto-imports, or routing, so a final
+`bun run generate` verifies the real site and confirms all five routes prerender.
 
 ## Tooling
 
@@ -229,8 +257,8 @@ Add `.prettierrc` copied from `wedding-lb`:
 ```
 
 Ported code is written in that style; without the config, prettier's defaults would
-reformat all of it. Existing `app/app.vue`, `app/app.test.ts`, and
-`app/assets/css/main.css` are reformatted to match.
+reformat all of it. Existing `app/app.vue` and `app/assets/css/main.css` are reformatted
+to match.
 
 `bun run lint`, `bun run format:check`, and `bun run test` must all pass.
 
