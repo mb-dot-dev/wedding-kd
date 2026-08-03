@@ -5,8 +5,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "format": "prettier --write app",
-    "format:check": "prettier --check app",
+    "format": "prettier --write app test",
+    "format:check": "prettier --check app test",
     "generate": "nuxt generate",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
