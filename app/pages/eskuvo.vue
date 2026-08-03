@@ -4,8 +4,8 @@
       <PageHeading>Esküvő</PageHeading>
     </header>
     <VenuePlaceholder class="mt-4" />
-    <div class="w-full mt-5">
-      <div class="flex flex-col md:flex-row gap-4 justify-center text-ink">
+    <div class="w-full mt-5 px-4">
+      <div class="max-w-2xl mx-auto flex flex-col md:flex-row gap-4 justify-center text-ink">
         <div class="text-center">
           <h3 class="text-lg font-semibold">Zugligeti Szent Család Plébánia</h3>
           <div>{{ address }}</div>
