@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import HighlightStrip from '../../app/components/HighlightStrip.vue';
 import MapButton from '../../app/components/MapButton.vue';
 import MiddleHeading from '../../app/components/MiddleHeading.vue';
@@ -8,9 +8,14 @@ import VenuePlaceholder from '../../app/components/VenuePlaceholder.vue';
 import EskuvoPage from '../../app/pages/eskuvo.vue';
 import LakodalomPage from '../../app/pages/lakodalom.vue';
 
-vi.stubGlobal('useSeoMeta', vi.fn());
+const seoMeta = vi.fn();
+vi.stubGlobal('useSeoMeta', seoMeta);
 
 const components = { PageHeading, HighlightStrip, MiddleHeading, VenuePlaceholder, MapButton };
+
+beforeEach(() => {
+  seoMeta.mockClear();
+});
 
 describe('eskuvo page', () => {
   const mountPage = () => mount(EskuvoPage, { global: { components } });
@@ -38,6 +43,16 @@ describe('eskuvo page', () => {
   it('shows a parking section', () => {
     expect(mountPage().text()).toContain('Parkolás');
   });
+
+  it('sets the correct social share metadata', () => {
+    mountPage();
+
+    const meta = seoMeta.mock.calls[0][0];
+    expect(meta.ogUrl).toBe('https://kataesdomi.info/eskuvo');
+    expect(meta.ogImage).toBe('https://kataesdomi.info/images/og.jpg');
+    expect(meta.ogLocale).toBe('hu_HU');
+    expect(meta.ogSiteName).toBe('Kata és Domi esküvője');
+  });
 });
 
 describe('lakodalom page', () => {
@@ -63,5 +78,15 @@ describe('lakodalom page', () => {
 
     expect(wrapper.text()).toContain('TODO: cím');
     expect(wrapper.findAll('a').some((a) => a.attributes('href')?.includes('google.com'))).toBe(false);
+  });
+
+  it('sets the correct social share metadata', () => {
+    mountPage();
+
+    const meta = seoMeta.mock.calls[0][0];
+    expect(meta.ogUrl).toBe('https://kataesdomi.info/lakodalom');
+    expect(meta.ogImage).toBe('https://kataesdomi.info/images/og.jpg');
+    expect(meta.ogLocale).toBe('hu_HU');
+    expect(meta.ogSiteName).toBe('Kata és Domi esküvője');
   });
 });

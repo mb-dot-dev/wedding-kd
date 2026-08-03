@@ -1,12 +1,17 @@
 import { mount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import HighlightStrip from '../../app/components/HighlightStrip.vue';
 import MiddleHeading from '../../app/components/MiddleHeading.vue';
 import IndexPage from '../../app/pages/index.vue';
 
-vi.stubGlobal('useSeoMeta', vi.fn());
+const seoMeta = vi.fn();
+vi.stubGlobal('useSeoMeta', seoMeta);
 
 const mountPage = () => mount(IndexPage, { global: { components: { HighlightStrip, MiddleHeading } } });
+
+beforeEach(() => {
+  seoMeta.mockClear();
+});
 
 describe('index page', () => {
   it('shows the couple and the date', () => {
@@ -46,5 +51,15 @@ describe('index page', () => {
     expect(text).toContain('14:30 - Esküvő');
     expect(text).toContain('Vacsora');
     expect(text).toContain('Buli');
+  });
+
+  it('sets the correct social share metadata', () => {
+    mountPage();
+
+    const meta = seoMeta.mock.calls[0][0];
+    expect(meta.ogUrl).toBe('https://kataesdomi.info');
+    expect(meta.ogImage).toBe('https://kataesdomi.info/images/og.jpg');
+    expect(meta.ogLocale).toBe('hu_HU');
+    expect(meta.ogSiteName).toBe('Kata és Domi esküvője');
   });
 });

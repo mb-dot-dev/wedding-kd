@@ -1,14 +1,19 @@
 import { mount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import GoogleFormsButton from '../../app/components/GoogleFormsButton.vue';
 import PageHeading from '../../app/components/PageHeading.vue';
 import RevolutLinkButton from '../../app/components/RevolutLinkButton.vue';
 import NaszajandekPage from '../../app/pages/naszajandek.vue';
 import VisszajelzesPage from '../../app/pages/visszajelzes.vue';
 
-vi.stubGlobal('useSeoMeta', vi.fn());
+const seoMeta = vi.fn();
+vi.stubGlobal('useSeoMeta', seoMeta);
 
 const components = { PageHeading, RevolutLinkButton, GoogleFormsButton };
+
+beforeEach(() => {
+  seoMeta.mockClear();
+});
 
 describe('naszajandek page', () => {
   const mountPage = () => mount(NaszajandekPage, { global: { components } });
@@ -30,6 +35,16 @@ describe('naszajandek page', () => {
     expect(wrapper.findComponent(RevolutLinkButton).exists()).toBe(false);
     expect(wrapper.text()).toContain('TODO: Revolut tag');
   });
+
+  it('sets the correct social share metadata', () => {
+    mountPage();
+
+    const meta = seoMeta.mock.calls[0][0];
+    expect(meta.ogUrl).toBe('https://kataesdomi.info/naszajandek');
+    expect(meta.ogImage).toBe('https://kataesdomi.info/images/og.jpg');
+    expect(meta.ogLocale).toBe('hu_HU');
+    expect(meta.ogSiteName).toBe('Kata és Domi esküvője');
+  });
 });
 
 describe('visszajelzes page', () => {
@@ -48,5 +63,15 @@ describe('visszajelzes page', () => {
 
     expect(wrapper.findComponent(GoogleFormsButton).exists()).toBe(false);
     expect(wrapper.text()).toContain('TODO: google forms link');
+  });
+
+  it('sets the correct social share metadata', () => {
+    mountPage();
+
+    const meta = seoMeta.mock.calls[0][0];
+    expect(meta.ogUrl).toBe('https://kataesdomi.info/visszajelzes');
+    expect(meta.ogImage).toBe('https://kataesdomi.info/images/og.jpg');
+    expect(meta.ogLocale).toBe('hu_HU');
+    expect(meta.ogSiteName).toBe('Kata és Domi esküvője');
   });
 });
