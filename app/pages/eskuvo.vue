@@ -7,7 +7,7 @@
     <div class="w-full mt-5">
       <div class="flex flex-col md:flex-row gap-4 justify-center text-ink">
         <div class="text-center">
-          <h3>Zugligeti Szent Család Plébánia</h3>
+          <h3 class="text-lg font-semibold">Zugligeti Szent Család Plébánia</h3>
           <div>{{ address }}</div>
           <div class="mt-2">Kezdés: tervezetten 14:30</div>
 

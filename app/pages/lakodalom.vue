@@ -7,7 +7,7 @@
     <div class="w-full mt-5">
       <div class="flex flex-col md:flex-row gap-4 justify-center text-ink">
         <div class="text-center">
-          <h3>Lóvasút Kulturális és Rendezvényközpont</h3>
+          <h3 class="text-lg font-semibold">Lóvasút Kulturális és Rendezvényközpont</h3>
           <div>{{ address }}</div>
           <div class="mt-2">A templomtól csupán pár perc sétára.</div>
           <!-- TODO: <MapButton class="mt-4 flex justify-center" lat="..." long="..." /> once the address is confirmed -->

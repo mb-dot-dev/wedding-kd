@@ -11,11 +11,11 @@
           Csak közös életünk kezdetén egy kis támogatásra!
         </div>
         <div class="text-center">
-          <h3>TODO: név</h3>
+          <h3 class="text-lg font-semibold">TODO: név</h3>
           <div>bankszámlaszám: TODO: bankszámlaszám</div>
         </div>
         <div class="text-center">
-          <h3>Revolut link/tag:</h3>
+          <h3 class="text-lg font-semibold">Revolut link/tag:</h3>
           <!-- TODO: <RevolutLinkButton class="mt-2 flex justify-center" tag="..." currency="huf" amount="1000" note="nászajándék" /> once the Revolut tag is known -->
           TODO: Revolut tag
         </div>

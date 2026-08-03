@@ -37,11 +37,11 @@
     <div class="w-full mt-8">
       <div class="flex flex-col md:flex-row gap-4 justify-center text-ink">
         <div class="text-center">
-          <h3>Hol?</h3>
+          <h3 class="text-lg font-semibold">Hol?</h3>
           <div>Zugligeti Szent Család Plébánia</div>
         </div>
         <div class="text-center">
-          <h3>Mikor?</h3>
+          <h3 class="text-lg font-semibold">Mikor?</h3>
           <div>2027. május 22.</div>
           <div>14:30</div>
         </div>
