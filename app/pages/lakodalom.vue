@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 const title = 'Lakodalom helyszín';
 const address = 'TODO: cím';
-const description = `Lóvasút Kulturális és Rendezvényközpont, cím: ${address}`;
+const description = 'Lóvasút Kulturális és Rendezvényközpont — a templomtól pár perc sétára';
 
 useSeoMeta({
   title,

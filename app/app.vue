@@ -7,6 +7,7 @@
 <script lang="ts" setup>
 useHead({
   title: 'Kata és Domi',
+  titleTemplate: '%s | Kata és Domi',
   htmlAttrs: { lang: 'hu' },
   bodyAttrs: {
     style: 'background-color: var(--color-ivory)',

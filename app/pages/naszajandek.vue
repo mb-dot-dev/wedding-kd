@@ -26,7 +26,7 @@
 
 <script lang="ts" setup>
 const title = 'Nászajándék';
-const description = 'Kata és Domi esküvője';
+const description = 'Ajándékötletek és támogatási lehetőségek Kata és Domi esküvőjére';
 
 useSeoMeta({
   title,

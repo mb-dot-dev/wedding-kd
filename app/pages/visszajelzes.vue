@@ -21,7 +21,7 @@
 
 <script lang="ts" setup>
 const title = 'Visszajelzés';
-const description = 'Kata és Domi esküvője';
+const description = 'Részvételi visszajelzés küldése Kata és Domi esküvőjére';
 
 useSeoMeta({
   title,

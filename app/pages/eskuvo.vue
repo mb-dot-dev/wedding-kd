@@ -29,7 +29,7 @@
 <script lang="ts" setup>
 const title = 'Esküvő helyszín';
 const address = '1125. Szarvas Gábor út 52.';
-const description = `Kezdés: tervezetten 14:30, cím: ${address}`;
+const description = 'A szertartás a Zugligeti Szent Család Plébánián, tervezetten 14:30-kor';
 
 useSeoMeta({
   title,
