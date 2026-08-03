@@ -2,6 +2,7 @@
   <svg
     id="Layer_1"
     class="w-5 h-5 me-2 text-white"
+    aria-hidden="true"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
