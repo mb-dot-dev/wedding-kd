@@ -1156,8 +1156,11 @@ describe('visszajelzes page', () => {
     expect(mountPage().text()).toContain('TODO: határidő');
   });
 
-  it('renders a Google Forms button', () => {
-    expect(mountPage().findComponent(GoogleFormsButton).exists()).toBe(true);
+  it('does not render an RSVP button while the form URL is unknown', () => {
+    const wrapper = mountPage();
+
+    expect(wrapper.findComponent(GoogleFormsButton).exists()).toBe(false);
+    expect(wrapper.text()).toContain('TODO: google forms link');
   });
 });
 ```
@@ -1244,7 +1247,8 @@ Create `app/pages/visszajelzes.vue`:
           Légyszi jelezzetek vissza ezen a linken TODO: határidő-ig.
         </div>
         <div class="text-center">
-          <GoogleFormsButton class="flex justify-center" link="TODO: google forms link" />
+          <!-- TODO: <GoogleFormsButton class="flex justify-center" link="..." /> once the form URL exists -->
+          TODO: google forms link
         </div>
       </div>
     </div>
