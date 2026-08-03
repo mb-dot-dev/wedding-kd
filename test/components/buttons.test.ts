@@ -32,6 +32,12 @@ describe('GoogleFormsButton', () => {
 
     expect(wrapper.find('a').attributes('href')).toBe('https://forms.gle/example');
   });
+
+  it('renders the Hungarian label', () => {
+    const wrapper = mount(GoogleFormsButton, { props: { link: 'https://forms.gle/example' } });
+
+    expect(wrapper.text()).toContain('Visszajelzés küldése');
+  });
 });
 
 describe('RevolutLinkButton', () => {
