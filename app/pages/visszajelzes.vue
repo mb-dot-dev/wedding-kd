@@ -11,7 +11,7 @@
           Légyszi jelezzetek vissza TODO: határidő-ig.
         </div>
         <div class="text-center">
-          <!-- TODO: <GoogleFormsButton class="flex justify-center" link="..." /> once the form URL exists -->
+          <!-- TODO: add a GoogleFormsButton here once the RSVP form URL exists -->
           TODO: google forms link
         </div>
       </div>

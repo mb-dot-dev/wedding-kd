@@ -1,3 +1,10 @@
+<!--
+  The Google Forms logo. Its hex values are Google's brand colours, not our palette, so
+  the project's "colours come from @theme tokens only" rule does not apply here — that
+  rule exists to stop the source project's Tailwind palette classes leaking in.
+  Do not convert these to currentColor: the mark is multi-colour by design and would
+  render as an unrecognisable monochrome blob.
+-->
 <template>
   <svg
     id="Layer_1"

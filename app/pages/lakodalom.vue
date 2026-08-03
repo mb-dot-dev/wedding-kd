@@ -10,7 +10,7 @@
           <h3 class="text-lg font-semibold">Lóvasút Kulturális és Rendezvényközpont</h3>
           <div>{{ address }}</div>
           <div class="mt-2">A templomtól csupán pár perc sétára.</div>
-          <!-- TODO: <MapButton class="mt-4 flex justify-center" lat="..." long="..." /> once the address is confirmed -->
+          <!-- TODO: add a MapButton here once the Lóvasút coordinates are known — see eskuvo.vue for the pattern -->
         </div>
       </div>
     </div>
