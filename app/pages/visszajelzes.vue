@@ -11,7 +11,8 @@
           Légyszi jelezzetek vissza ezen a linken TODO: határidő-ig.
         </div>
         <div class="text-center">
-          <GoogleFormsButton class="flex justify-center" link="TODO: google forms link" />
+          <!-- TODO: <GoogleFormsButton class="flex justify-center" link="..." /> once the form URL exists -->
+          TODO: google forms link
         </div>
       </div>
     </div>

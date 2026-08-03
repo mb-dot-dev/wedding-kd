@@ -40,7 +40,10 @@ describe('visszajelzes page', () => {
     expect(mountPage().text()).toContain('TODO: határidő');
   });
 
-  it('renders a Google Forms button', () => {
-    expect(mountPage().findComponent(GoogleFormsButton).exists()).toBe(true);
+  it('does not render an RSVP button while the form URL is unknown', () => {
+    const wrapper = mountPage();
+
+    expect(wrapper.findComponent(GoogleFormsButton).exists()).toBe(false);
+    expect(wrapper.text()).toContain('TODO: google forms link');
   });
 });
