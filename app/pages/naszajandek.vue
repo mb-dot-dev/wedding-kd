@@ -16,13 +16,8 @@
         </div>
         <div class="text-center">
           <h3>Revolut link/tag:</h3>
-          <RevolutLinkButton
-            class="mt-2 flex justify-center"
-            tag="TODO"
-            currency="huf"
-            amount="1000"
-            note="nászajándék"
-          />
+          <!-- TODO: <RevolutLinkButton class="mt-2 flex justify-center" tag="..." currency="huf" amount="1000" note="nászajándék" /> once the Revolut tag is known -->
+          TODO: Revolut tag
         </div>
       </div>
     </div>

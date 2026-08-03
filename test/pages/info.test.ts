@@ -24,8 +24,11 @@ describe('naszajandek page', () => {
     expect(text).toContain('TODO: bankszámlaszám');
   });
 
-  it('renders a Revolut link button', () => {
-    expect(mountPage().findComponent(RevolutLinkButton).exists()).toBe(true);
+  it('does not render a Revolut link button while the tag is unknown', () => {
+    const wrapper = mountPage();
+
+    expect(wrapper.findComponent(RevolutLinkButton).exists()).toBe(false);
+    expect(wrapper.text()).toContain('TODO: Revolut tag');
   });
 });
 
