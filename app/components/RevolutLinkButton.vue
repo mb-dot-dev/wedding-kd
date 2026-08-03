@@ -1,0 +1,22 @@
+<script setup lang="ts">
+defineProps<{
+  tag: string;
+  currency: string;
+  amount: string;
+  note: string;
+}>();
+</script>
+
+<template>
+  <div>
+    <a
+      :href="`https://revolut.me/${tag}`"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex text-ivory bg-espresso hover:bg-ink focus:ring-4 focus:outline-none focus:ring-sand font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center"
+    >
+      <RevolutIcon />
+      {{ tag }}
+    </a>
+  </div>
+</template>

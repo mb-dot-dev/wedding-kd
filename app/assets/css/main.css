@@ -1,1 +1,29 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --font-tangerine: Tangerine, ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-sans:
+    Ysabeau, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+
+  --color-ivory: #f5efe6;
+  --color-sand: #c9ae8c;
+  --color-clay: #85684a;
+  --color-espresso: #2b231b;
+  --color-ink: #14110d;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-sand, currentColor);
+  }
+}
