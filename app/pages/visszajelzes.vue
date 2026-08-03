@@ -8,7 +8,7 @@
       <div class="max-w-2xl mx-auto flex flex-col justify-center gap-4 text-ink">
         <div class="text-center">
           Nagyon örülünk, hogy tudtok velünk ünnepelni! <br />
-          Légyszi jelezzetek vissza ezen a linken TODO: határidő-ig.
+          Légyszi jelezzetek vissza TODO: határidő-ig.
         </div>
         <div class="text-center">
           <!-- TODO: <GoogleFormsButton class="flex justify-center" link="..." /> once the form URL exists -->
