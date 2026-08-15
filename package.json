@@ -17,7 +17,7 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
-    "@nuxt/eslint": "1.16.0",
+    "@nuxt/eslint": "1.17.0",
     "@nuxt/image": "2.1.0",
     "@tailwindcss/vite": "^4.3.3",
     "autoprefixer": "^10.5.4",
@@ -26,8 +26,8 @@
     "postcss": "^8.5.25",
     "prettier": "^3.9.6",
     "tailwindcss": "^4.0.0",
-    "typescript": "^6.0.0",
-    "vitest": "^3.2.7",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10",
     "vue": "^3.5.41",
     "vue-router": "^5.1.0"
   },
